@@ -1,0 +1,13 @@
+site/
+site.zip
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.env
+.venv/
+.idea/
+.vscode/
+node_modules/
