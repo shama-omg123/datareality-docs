@@ -4,7 +4,7 @@ deployment:
       value: prod
       name: docs
     image:
-      repository: "036936483535.dkr.ecr.us-east-2.amazonaws.com/docs:latest"
+      repository: ""
     imagePullPolicy: Always
   replicas: 1
 kubernetesClusterDomain: cluster.local
