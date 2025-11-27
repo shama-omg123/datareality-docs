@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-{{ include "docs.fullname" . }}-deployment
+  labels:
+    app: docs-app
+    {{- include "docs.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: docs-app
+      {{- include "docs.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        app: docs-app
+        {{- include "docs.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: docs-app
+          env:
+            - name: ENV
+              value: {{ quote .Values.deployment.docsApp.env.value }}
+            - name: NAME
+              value: {{ quote .Values.deployment.docsApp.env.name }}
+            - name: KUBERNETES_CLUSTER_DOMAIN
+              value: {{ quote .Values.kubernetesClusterDomain }}
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "{{ .Values.service.targetPort }}"
+          image: "{{ .Values.deployment.docsApp.image.repository }}"
+          imagePullPolicy: {{ .Values.deployment.docsApp.imagePullPolicy }}
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /docs/
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /docs/
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources: {}
+      restartPolicy: Always

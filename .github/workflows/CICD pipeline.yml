@@ -1,0 +1,94 @@
+name: CI/CD Pipeline
+
+env:
+  IMAGE_NAME: docs
+  REGISTRY: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ vars.IMAGE_NAME }}"
+  TAG_LATEST: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ vars.IMAGE_NAME }}:latest"
+  TAG_COMMIT: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+  TAG_BRANCH: "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/${{ vars.IMAGE_NAME }}:${{ github.ref_name }}"
+  DOCKER_TLS_CERTDIR: ''
+  TF_STATE_NAME: default
+  TF_CACHE_KEY: default
+  
+on: 
+  push:
+    branches:
+      - 'main'
+
+  workflow_dispatch:
+concurrency:
+  group: "${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Starting the job by printing the Environment Variables
+        run: |
+          echo "The job_id is: $GITHUB_JOB"
+          echo "The id of this action is: $GITHUB_ACTION"
+          echo "The run id is: $GITHUB_RUN_ID"
+          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
+          echo "GitHub SHA: $GITHUB_SHA"
+      - name: Print All Env Vars Job
+        run: |
+          echo "GitHub CI/CD | Print all environment variables"
+          echo env
+
+      - name: Checkout code
+        uses: actions/checkout@v4.1.6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+          
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4.0.2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-duration-seconds: 1200
+          role-session-name: githubsession
+          managed-session-policies: |
+            arn:aws:iam::aws:policy/eks_full_access
+            arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registries: ${{ secrets.AWS_ACCOUNT_ID }}
+          mask-password: "true"
+
+      - name: Main - Build, tag, and push docs Docker image to Amazon ECR
+        if: github.ref == 'refs/heads/main'
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: docs
+        run: |
+          docker pull $TAG_LATEST || true
+          docker build --platform=linux/amd64 --cache-from $TAG_LATEST -t $TAG_COMMIT -t $TAG_LATEST .
+          docker tag $TAG_LATEST $TAG_BRANCH
+          docker push $TAG_BRANCH
+          docker push $TAG_COMMIT
+
+      - name: Update kubeconfig for EKS - Main
+        if: github.ref == 'refs/heads/main'
+        run: aws eks update-kubeconfig --name prod-engineering-safetylab-eks --region us-east-2
+
+      - name: Deploy Helm Chart- Main
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd iac/eks/prod/deployments/docs
+          helm upgrade --force --install docs --set deployment.docsApp.image.repository=$TAG_COMMIT .
+          cd ../../../../../
+
+          echo "Deploying application..."
+          echo "Production Application successfully deployed."
