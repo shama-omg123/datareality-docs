@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://nui.thedatareality.org',
+  url: 'https://nui.thedatareality.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   baseUrl: '/docs/',
 
