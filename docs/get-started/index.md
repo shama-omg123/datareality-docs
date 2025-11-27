@@ -11,7 +11,7 @@ DataReality is a platform for post‑market surveillance, quality event monitori
 
 ## Accessing DataReality
 
-- Sign in at `https://nui.thedatareality.org/`.
+- Sign in at `https://nui.thedatareality.com/`.
 - Confirm your region and time window in the dashboard header.
 - Use search to find preferences (products) and pin favorites.
 

@@ -1,12 +1,12 @@
 # Welcome to DataReality Docs
 
-This site hosts technical documentation and help guides for DataReality's NUI platform: [https://nui.thedatareality.org/](https://nui.thedatareality.org/).
+This site hosts technical documentation and help guides for DataReality's NUI platform: [https://nui.thedatareality.com/](https://nui.thedatareality.com/).
 
 Use the tabs at the top to explore Get Started, Guides, Manuals, and Reference — mirroring the structure of Docker Docs.
 
 ## Quick Start
 
-1. Sign in to NUI at `https://nui.thedatareality.org/`.
+1. Sign in to NUI at `https://nui.thedatareality.com/`.
 2. Choose a preference in the Dashboard Overview.
 3. Explore Product Events, Event Distribution, and export data.
 

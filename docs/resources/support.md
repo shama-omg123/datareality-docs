@@ -2,5 +2,5 @@
 
 Need help?
 
-- Email: support@thedatareality.org
+- Email: support@thedatareality.com
 - Internal chat: #datareality‑support

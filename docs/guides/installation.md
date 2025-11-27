@@ -10,7 +10,7 @@ This section describes how internal users set up access and configure the enviro
 ## Steps
 
 1. Request access from your administrator.
-2. Log in to `https://nui.thedatareality.org/`.
+2. Log in to `https://nui.thedatareality.com/`.
 3. Confirm region and time window in the dashboard header.
 4. Bookmark frequently used preferences for quick navigation.
 
