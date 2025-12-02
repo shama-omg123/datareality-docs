@@ -22,15 +22,9 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: docs.thedatareality.com
 
 spec:
-  rules:
-  - host: docs.thedatareality.com
-    http:
-      paths:
-      - path: /docs
-        pathType: Prefix
-        backend:
-          service:
-            name: 'prod-{{ include "docs.fullname" . }}-service'
-            port:
-              number: 80
+  defaultBackend:
+    service:
+      name: 'prod-{{ include "docs.fullname" . }}-service'
+      port:
+        number: 80
   ingressClassName: prod-safetylab-ingress
