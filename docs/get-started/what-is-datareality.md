@@ -19,3 +19,4 @@ It centralizes device event data, recall information, and regulatory workflows t
 - Quality and Safety teams monitoring events and injuries
 - Regulatory teams preparing Vigilance, PSUR, or CRA documentation
 - Product teams tracking malfunctions and corrective actions
+
