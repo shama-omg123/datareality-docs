@@ -1,0 +1,82 @@
+site_name: DataReality Docs
+site_description: Technical documentation and help guides for DataReality (NUI)
+site_url: https://nui.thedatareality.org/docs/
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - content.code.copy
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight
+
+nav:
+  - Get started:
+      - Overview: get-started/index.md
+      - What is Data Reality?: get-started/what-is-datareality.md
+      - Dashboard Overview: get-started/dashboard-overview.md
+      - Selecting Your Product: get-started/selecting-your-product.md
+      - Understanding Event Distribution: get-started/event-distribution.md
+      - Navigation Menu: get-started/navigation-menu.md
+      - Installation: guides/installation.md
+      - Quick demo: guides/quick-demo.md
+  - Guides:
+      - Tracking Event Trends: guides/tracking-event-trends.md
+      - Running a Regulatory Test: guides/regulatory-test.md
+      - Analyzing Event Details: guides/analyzing-event-details.md
+      - Downloading Raw Data: guides/downloading-raw-data.md
+      - Preferences monitoring: guides/preferences.md
+      - Events and recalls: guides/events-recalls.md
+  - Manuals:
+      - Hazard Analysis: manuals/hazard-analysis.md
+      - FMEA: manuals/fmea.md
+      - CRA & Audit: manuals/cra-audit.md
+      - Vigilance & PSUR Reporting: manuals/vigilance-psur.md
+      - Roles and permissions: manuals/roles-permissions.md
+      - Security and compliance: manuals/security-compliance.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - Data Definitions: reference/data-definitions.md
+      - System Requirements: reference/system-requirements.md
+      - REST API: reference/api.md
+      - UI components: reference/ui-components.md
+  - Resources:
+      - Documentation Outline: outline.md
+      - Release notes: resources/release-notes.md
+      - Support: resources/support.md
