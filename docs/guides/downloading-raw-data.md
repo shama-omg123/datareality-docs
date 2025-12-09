@@ -1,5 +1,9 @@
 # Downloading Raw Data
 
+
+
+![Downloading Raw Data](/img/datareality-downloading-raw-data.png)
+
 ## Process
 
 1. Click "Download Raw Data" in the dashboard header.

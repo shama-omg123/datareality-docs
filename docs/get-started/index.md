@@ -1,8 +1,14 @@
 # Get DataReality
 
+![DataReality Hero](/img/datareality-hero-new.png)
+
+
+
 DataReality is a platform for post‑market surveillance, quality event monitoring, and regulatory workflows. It centralizes device event data, recall information, and reporting so you can analyze trends, mitigate risk, and stay audit‑ready.
 
 ## Before you start
+
+![Before You Start](/img/datareality-before-start.png)
 
 > Note
 > - You need a company account to access NUI.
@@ -11,11 +17,15 @@ DataReality is a platform for post‑market surveillance, quality event monitori
 
 ## Accessing DataReality
 
+![Accessing DataReality](/img/datareality-accessing-section.png)
+
 - Sign in at `https://nui.thedatareality.com/`.
 - Confirm your region and time window in the dashboard header.
 - Use search to find preferences (products) and pin favorites.
 
 ## Choose your path
+
+![Choose Your Path](/img/datareality-choose-path.png)
 
 - [What is DataReality?](what-is-datareality.md) — overview and goals.
 - [Installation](../guides/installation.md) — set up internal access and environment.

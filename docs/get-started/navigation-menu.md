@@ -1,5 +1,7 @@
 # Navigation Menu
 
+![Navigation Menu Overview](/img/datareality-navigation-menu.png)
+
 The left menu organizes core functions:
 
 - Risk Analysis: hazard identification, scoring (Likelihood × Severity), mitigation tracking.

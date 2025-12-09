@@ -1,5 +1,7 @@
 # Installation
 
+![Installation Setup](/img/datareality-installation.png)
+
 This section describes how internal users set up access and configure the environment.
 
 ## Prerequisites

@@ -1,5 +1,7 @@
 # Understanding Event Distribution
 
+![Event Distribution Analytics](/img/datareality-event-distribution.png)
+
 The donut chart shows the distribution of event categories for the selected preference and window.
 
 - Percentage vs Number: toggle to view either relative share or absolute counts.

@@ -1,5 +1,9 @@
 # Running a Regulatory Test
 
+![Regulatory Test Workflow](/img/datareality-regulatory-test.png)
+
+
+
 ## Process
 
 1. Open the Regulatory Test module from the left menu.

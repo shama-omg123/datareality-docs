@@ -1,6 +1,10 @@
 # Tracking Event Trends
 
-Use Table view to inspect monthly breakdowns (e.g., Dec 2024, Jan 2025).
+Use Table view to inspect monthly breakdowns.
+
+ 
+
+![Tracking Event Trends](/img/tracking-event-trends-v2.png)
 
 ## Columns
 
@@ -8,8 +12,6 @@ Use Table view to inspect monthly breakdowns (e.g., Dec 2024, Jan 2025).
 - Death: reported deaths.
 - Malfunction: device malfunction counts.
 - Injury: injuries associated with the preference.
-
-## How to read the table
 
 - Sort by any column to surface trends.
 - Click a cell to drill into the underlying event list for that period.
